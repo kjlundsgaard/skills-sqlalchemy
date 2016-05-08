@@ -39,7 +39,7 @@ Model.query.filter(Model.name.like("Cor%")).all()
 # Get all brands that were founded in 1903 and that are not yet discontinued.
 Brand.query.filter(Brand.founded == 1903, Brand.discontinued == None).all()
 
-# Get all brands that are either 1) discontinued (at any time) or 2) founded 
+# Get all brands that are either 1) discontinued (at any time) or 2) founded
 # before 1950.
 Brand.query.filter( db.or_(Brand.discontinued != None, Brand.founded < 1950) ).all()
 
@@ -48,17 +48,25 @@ Model.query.filter(Model.brand_name != 'Chevrolet').all()
 
 # Fill in the following functions. (See directions for more info.)
 
+
 def get_model_info(year):
     '''Takes in a year, and prints out each model, brand_name, and brand
     headquarters for that year using only ONE database query.'''
 
-    pass
+    model_info = db.session.query(Model, Brand).outerjoin(Brand).filter(Model.year == year).all()
+
+    for item in model_info:
+        print item.Model.name, item.Model.brand_name, item.Brand.headquarters
+
 
 def get_brands_summary():
     '''Prints out each brand name, and each model name for that brand
      using only ONE database query.'''
 
-    pass
+    car_info = db.session.query(Brand, Model).outerjoin(Model).all()
+
+    for item in car_info:
+        print item.Model.name, item.Brand.name
 
 # -------------------------------------------------------------------
 # Part 2.5: Discussion Questions (Include your answers as comments.)
