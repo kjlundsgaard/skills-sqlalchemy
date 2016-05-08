@@ -73,8 +73,14 @@ def get_brands_summary():
 
 # 1. What is the returned value and datatype of ``Brand.query.filter_by(name='Ford')``?
 
+# <flask_sqlalchemy.BaseQuery object at 0x109da1490>
+# The returned datatype is a Query object that you can call .all() or another SQLAlchemy method on to return one or many rows from the Brand table
+
 # 2. In your own words, what is an association table, and what *type* of relationship
 # does an association table manage?
+
+# Association table is a table that stores only primary keys of other tables with a many to many relationship 
+# so that the tables are linked in a way that does not store redundant information
 
 # -------------------------------------------------------------------
 # Part 3
