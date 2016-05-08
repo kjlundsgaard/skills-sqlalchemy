@@ -79,14 +79,18 @@ def get_brands_summary():
 # 2. In your own words, what is an association table, and what *type* of relationship
 # does an association table manage?
 
-# Association table is a table that stores only primary keys of other tables with a many to many relationship 
+# Association table is a table that stores only primary keys of other tables with a many to many relationship
 # so that the tables are linked in a way that does not store redundant information
 
 # -------------------------------------------------------------------
 # Part 3
 
+
 def search_brands_by_name(mystr):
-    pass
+
+    brands_info = Brand.query.filter(Brand.name.like("%"+mystr+"%")).all()
+
+    return brands_info
 
 
 def get_models_between(start_year, end_year):
