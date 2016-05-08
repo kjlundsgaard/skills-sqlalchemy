@@ -66,7 +66,7 @@ def get_brands_summary():
     car_info = db.session.query(Brand, Model).outerjoin(Model).all()
 
     for item in car_info:
-        print item.Model.name, item.Brand.name
+        print "\n", item.Model.name, "\t", item.Brand.name
 
 # -------------------------------------------------------------------
 # Part 2.5: Discussion Questions (Include your answers as comments.)
